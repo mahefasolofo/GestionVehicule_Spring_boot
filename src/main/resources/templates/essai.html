@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml"> <!--xmlns:th="http://www.thymeleaf.org" -->
+<head>
+    <meta charset="UTF-8">
+    <title>Essai</title>
+</head>
+    <body>
+
+        <div class="row">
+            <table class="table details-table table-dark" border="1">
+                <thead class="table-header">
+                    <tr>
+
+                        <th th:text="Id"></th>
+                        <th th:text="Libelle"></th>
+                        <th th:text="Modele"></th>
+                        <th th:text="Marque"></th>
+                        <th th:text="Actions"></th>
+                    </tr>
+                </thead>
+                <tbody class="summary-table">
+                    <tr th:each="voiture : ${voitures}" bgcolor="#f0f8ff" class="col-md-4 my-1 odd-row-color">
+
+                        <td><a th:href="@{|/./voitures/afficherDetails/${voiture.idMarque}|}" th:text="${voiture.idMarque}">
+                        </a></td>
+                        <td th:text="${voiture.libele}"></td>
+                        <td th:text="${voiture.modele}"></td>
+                        <td th:text="${voiture.marque}"></td>
+
+                        <td >
+                            <a th:href="@{||}" th:object="${voiture}">
+                                modifier
+                            </a>
+                            <a th:href="@{|/./voitures/delete/${voiture.idMarque}|}" th:object="${voiture}" method="DELETE">
+                                Supprimer
+                            </a>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </body>
+</html>
